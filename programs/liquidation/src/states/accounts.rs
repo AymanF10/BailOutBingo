@@ -1,8 +1,10 @@
+//Accounts: Making and storing details of an account of a project
+
 use anchor_lang::prelude::*;
 
 //Administrator Account
 #[account]
-#[derive(InitSpace)]
+#[derive(InitSpace)]  // initspace calculates the space required for an account to be created 
 pub struct Administrator {
     pub admin_pubkey: Pubkey,
     pub admin_bump: u8,

@@ -3,16 +3,16 @@ use crate::states::accounts::*;
 
 //initializing the administrators account
 #[derive(Accounts)]
-#[instruction(admin_pubkey: Pubkey)]
+#[instruction(admin_pubkey: Pubkey)] // enables anchor to retrieve the instruction argument even before the instruction is called 
 pub struct AdministratorInit<'info> {
     
     //signer
     #[account(mut)]
     pub deployer: Signer<'info>,
 
-    //administrator account
+    //creating the administrator account
     #[account(
-        init,
+        init, // the init constrain creates an account, assignimg space for an account
         payer = deployer,
         space = 8 + Administrator::INIT_SPACE,
         seeds = [b"admin", admin_pubkey.as_ref()],
@@ -26,10 +26,8 @@ pub struct AdministratorInit<'info> {
 #[derive(Accounts)]
 pub struct WhitelistedTokenContainerInit<'info>{
     //signer
-    #[account(mut,
-        constraint = admin_account.admin_pubkey == admin.key() @ crate::states::errors::ErrorCode::CallableByAdmin
-    )]
-    pub admin: Signer<'info>,
+    #[account(mut)]
+    pub caller: Signer<'info>, //caller is anyone calling the instruction
     
     #[account(
         mut,

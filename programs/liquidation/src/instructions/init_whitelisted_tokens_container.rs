@@ -6,11 +6,7 @@ pub fn whitelisted_tokens_container_init(ctx: Context<WhitelistedTokenContainerI
    let actual_admin = &ctx.accounts.admin_account;
    let caller = &ctx.accounts.admin;
 
-   require!(
-       actual_admin.admin_pubkey == caller.key(), 
-       crate::states::errors::ErrorCode::CallableByAdmin
-   );
-
+   //storing the whitelisted token container details
    out_ctx.whitelisted_tokens_bump = ctx.bumps.whitelisted_token_container;
    out_ctx.whitelisted_tokens = Vec::new();
 
