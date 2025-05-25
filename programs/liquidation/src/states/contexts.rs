@@ -39,7 +39,7 @@ pub struct WhitelistedTokenContainerInit<'info>{
     //whitelisted token container
     #[account(
         init,
-        payer = admin,
+        payer = caller,
         space = 8 + WhitelistedTokenContainer::INIT_SPACE,
         seeds = [b"whitelisted_token_container"], 
         bump,
@@ -51,7 +51,7 @@ pub struct WhitelistedTokenContainerInit<'info>{
 impl<'info> WhitelistedTokenContainerInit<'info> {
     pub fn check_caller_is_admin(ctx: &Context<WhitelistedTokenContainerInit>) -> Result<()> {
         require!(
-            ctx.accounts.admin_account.admin_pubkey == ctx.accounts.admin.key(),
+            ctx.accounts.admin_account.admin_pubkey == ctx.accounts.caller.key(),
             crate::states::errors::ErrorCode::CallableByAdmin
         );
         Ok(())

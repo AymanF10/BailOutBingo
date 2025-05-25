@@ -16,8 +16,8 @@ pub mod liquidation {
     }
 
     #[access_control(WhitelistedTokenContainerInit::check_caller_is_admin(&ctx))]
-    pub fn initialize_whitelisted_token_container(ctx: Context<WhitelistedTokenContainerInit>) -> Result<()> {
-        whitelisted_tokens_container_init(ctx)?;
+    pub fn initialize_whitelisted_token_container(mut ctx: Context<WhitelistedTokenContainerInit>) -> Result<()> {
+        whitelisted_tokens_container_init(&mut ctx)?;
         Ok(())
     }
 }
