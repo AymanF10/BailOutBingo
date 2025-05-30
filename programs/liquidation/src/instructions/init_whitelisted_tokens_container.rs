@@ -12,3 +12,18 @@ pub fn whitelisted_tokens_container_init(ctx: &mut Context<WhitelistedTokenConta
 
    Ok(())
 }
+
+pub fn add_whitelisted_token(ctx: Context<AddWhitelistedToken>, token_mint: Pubkey) -> Result<()> {
+    let container = &mut ctx.accounts.whitelisted_token_container;
+    
+    // Check if token is already whitelisted
+    require!(
+        !container.whitelisted_tokens.contains(&token_mint),
+        crate::states::errors::ErrorCode::TokenAlreadyWhitelisted
+    );
+    
+    // Add token to whitelist
+    container.whitelisted_tokens.push(token_mint);
+    
+    Ok(())
+}

@@ -57,3 +57,62 @@ impl<'info> WhitelistedTokenContainerInit<'info> {
         Ok(())
     }
 }
+
+// Add token to whitelist context
+#[derive(Accounts)]
+pub struct AddWhitelistedToken<'info> {
+    //signer
+    #[account(mut)]
+    pub caller: Signer<'info>,
+    
+    #[account(
+        mut,
+        seeds = [b"admin", admin_account.admin_pubkey.as_ref()],
+        bump = admin_account.admin_bump
+    )]
+    pub admin_account: Account<'info, Administrator>,
+    
+    #[account(
+        mut,
+        seeds = [b"whitelisted_token_container"],
+        bump = whitelisted_token_container.whitelisted_tokens_bump
+    )]
+    pub whitelisted_token_container: Account<'info, WhitelistedTokenContainer>,
+}
+
+impl<'info> AddWhitelistedToken<'info> {
+    pub fn check_caller_is_admin(ctx: &Context<AddWhitelistedToken>) -> Result<()> {
+        require!(
+            ctx.accounts.admin_account.admin_pubkey == ctx.accounts.caller.key(),
+            crate::states::errors::ErrorCode::CallableByAdmin
+        );
+        Ok(())
+    }
+}
+
+// Staking user info
+#[derive(Accounts)]
+#[instruction(token_mint: Pubkey, amount: u64)]
+pub struct Staker<'info> {
+    //signer
+    #[account(mut)]
+    pub caller: Signer<'info>,
+
+    //staker user info
+    #[account(
+        init,
+        payer = caller,
+        space = 8 + StakerUserInfo::INIT_SPACE,
+        seeds = [b"staker", caller.key().as_ref(), token_mint.as_ref()],
+        bump,
+    )]
+    pub staker_user_info: Account<'info, StakerUserInfo>,
+    
+    #[account(
+        seeds = [b"whitelisted_token_container"],
+        bump = whitelisted_token_container.whitelisted_tokens_bump
+    )]
+    pub whitelisted_token_container: Account<'info, WhitelistedTokenContainer>,
+    
+    pub system_program: Program<'info, System>,
+}

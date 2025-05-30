@@ -20,6 +20,17 @@ pub mod liquidation {
         whitelisted_tokens_container_init(&mut ctx)?;
         Ok(())
     }
+    
+    #[access_control(AddWhitelistedToken::check_caller_is_admin(&ctx))]
+    pub fn add_token_to_whitelist(ctx: Context<AddWhitelistedToken>, token_mint: Pubkey) -> Result<()> {
+        add_whitelisted_token(ctx, token_mint)?;
+        Ok(())
+    }
+    
+    pub fn initialize_staker(ctx: Context<Staker>, token_mint: Pubkey, amount: u64) -> Result<()> {
+        staker_initialize(ctx, token_mint, amount)?;
+        Ok(())
+    }
 }
 
 
