@@ -1,4 +1,3 @@
-
 # Solana dApp Security Roadmap
 ![Group 48096155](https://github.com/Rektoff/Security-SoK-for-Solana-blockchain-/assets/144442822/cb98a230-3f65-4173-9b7c-eba843cb567b)
 
@@ -105,13 +104,13 @@ We strongly recommend partnering with us if you're committed to establishing sec
     - Trail of Bits
     - Kudelski Security
   - TOOLS:
-    - Ackee Trident (Solana fuzzing framework)
-    - Anchor Test UI (Visual Anchor testing framework)
-    - Blockworks Checked Math (Macro to check math operations)
-    - cargo-audit (checks Cargo.lock files for vulnerable crates)
-    - cargo-geiger (checks usage of unsafe Rust code)
-    - Neodyme Solana PoC Framework (penetration testing)
-    - OtterSec Solana CTF Framework
+    - Ackee Trident (Solana fuzzing framework): https://github.com/Ackee-Blockchain/trident
+    - Anchor Test UI (Visual Anchor testing framework): https://github.com/pratikbuilds/anchor-UI
+    - Blockworks Checked Math (Macro to check math operations): https://github.com/blockworks-foundation/checked-math
+    - cargo-audit (checks Cargo.lock files for vulnerable crates): https://docs.rs/cargo-audit/latest/cargo_audit/
+    - cargo-geiger (checks usage of unsafe Rust code): https://crates.io/crates/cargo-geiger
+    - Neodyme Solana PoC Framework (penetration testing): https://github.com/neodyme-labs/solana-poc-framework
+    - OtterSec Solana CTF Framework: https://github.com/otter-sec/sol-ctf-framework
   - AI-Powered Smart Contract Security Tools:
     - X-Ray (Sec3): [https://github.com/sec3-product/x-ray](https://github.com/sec3-product/x-ray)
     - L3X: [https://github.com/VulnPlanet/l3x](https://github.com/VulnPlanet/l3x)
