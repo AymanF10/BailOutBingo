@@ -51,6 +51,7 @@ The design and development stage is where security architecture becomes integral
     - Part 2: [https://www.sec3.dev/blog/how-to-audit-solana-smart-contracts-part-2-automated-scanning](https://www.sec3.dev/blog/how-to-audit-solana-smart-contracts-part-2-automated-scanning)
     - Part 3: [https://www.sec3.dev/blog/how-to-audit-solana-smart-contracts-part-3-penetration-testing](https://www.sec3.dev/blog/how-to-audit-solana-smart-contracts-part-3-penetration-testing)
     - Part 4: [https://www.sec3.dev/blog/how-to-audit-solana-smart-contracts-part-4-the-anchor-framework](https://www.sec3.dev/blog/how-to-audit-solana-smart-contracts-part-4-the-anchor-framework)
+
   - Solana Fuzz testing
     - [https://github.com/Ackee-Blockchain/trdelnik](https://github.com/Ackee-Blockchain/trdelnik)
     - [https://github.com/rust-fuzz/honggfuzz-rs#how-to-use-this-crate](https://github.com/rust-fuzz/honggfuzz-rs#how-to-use-this-crate)
@@ -60,17 +61,20 @@ The design and development stage is where security architecture becomes integral
   - other SAST / DAST on every commit
     - [https://docs.ziion.org/discover-the-tools/rust-tools](https://docs.ziion.org/discover-the-tools/rust-tools)
     - [https://docs.ziion.org/discover-the-tools/rust-automated-tools](https://docs.ziion.org/discover-the-tools/rust-automated-tools)
+
 ### II. Pre-deployment / Testnet stage
 The pre-deployment phase represents the most mission-critical juncture in your protocol's development lifecycle, where theoretical security architectures undergo rigorous validation before mainnet exposure. During this pivotal stage, forward-thinking development teams strategically engage specialized security partners, such as Rektoff, to establish robust defensive frameworks prior to production deployment. This phase demands comprehensive security orchestration, encompassing multi-dimensional code audits, advanced penetration testing, systematic stress testing under adversarial conditions, and formal mathematical verification of smart contract invariants, ensuring your protocol demonstrates uncompromising resilience for mainnet operations and end-user interactions.
 
 
 We strongly recommend partnering with us if you're committed to establishing security as the foundational cornerstone of your development methodology and seamlessly integrating advanced cybersecurity protocols throughout every stage of your engineering pipeline. Our comprehensive engineering lifecycle support leverages elite cybersecurity specialists from our globally distributed expert network, each bringing deep domain expertise in blockchain security, DeFi protocols, and smart contract architecture. By strategically orchestrating your security infrastructure and applying our battle-tested methodologies refined through years of protecting high-value protocols, we systematically eliminate critical vulnerabilities and operational risks, empowering your team to concentrate entirely on innovation, feature development, and accelerating your project's market deployment timeline.
+
 - **External Security Testing**
   - Choosing security providers & scheduling security review
   - Passing audit Readiness Checklist
     - Cargo Audit (Rust Dependency Scanner): [https://github.com/RustSec/rustsec/tree/main/cargo-audit](https://github.com/RustSec/rustsec/tree/main/cargo-audit)
     - Clippy & Rustfmt (Linting and Formatting): [https://github.com/rust-lang/rust-clippy](https://github.com/rust-lang/rust-clippy), [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)
     - Honggfuzz-rs (Fuzz-Driven Sanity Checks): [https://github.com/rust-fuzz/honggfuzz-rs](https://github.com/rust-fuzz/honggfuzz-rs)
+
   - Fuzzing as a service
     - [https://arxiv.org/pdf/2309.03006v2.pdf](https://arxiv.org/pdf/2309.03006v2.pdf)
     - [https://github.com/Ackee-Blockchain/trdelnik](https://github.com/Ackee-Blockchain/trdelnik)
@@ -78,9 +82,11 @@ We strongly recommend partnering with us if you're committed to establishing sec
     - ityfuzz: [https://github.com/fuzzland/ityfuzz](https://github.com/fuzzland/ityfuzz)
     - ContractFuzzer: [https://github.com/gongbell/ContractFuzzer](https://github.com/gongbell/ContractFuzzer)
     - CONTRAMASTER: [https://github.com/ntu-SRSLab/vultron](https://github.com/ntu-SRSLab/vultron)
+
   - Passing an audit contest
   - Web app audit / pentesting:
     - RESOURCES: Awesome Web Security (GitHub List): [https://github.com/qazbnm456/awesome-web-security](https://github.com/qazbnm456/awesome-web-security)
+
   - Stress Testing
     - [https://github.com/Cetipoo/solana-rpc-benchmark-tool](https://github.com/Cetipoo/solana-rpc-benchmark-tool)
     - [https://github.com/thorlabsDev/thorbench](https://github.com/thorlabsDev/thorbench)
@@ -88,6 +94,7 @@ We strongly recommend partnering with us if you're committed to establishing sec
     - [https://github.com/agjell/sol-tutorials/blob/master/solana-benchmarks.md](https://github.com/agjell/sol-tutorials/blob/master/solana-benchmarks.md)
     - [https://github.com/halbornteam/solana-test-framework](https://github.com/halbornteam/solana-test-framework)
     - [https://www.youtube.com/watch?v=WrDrr23Pj9Y](https://www.youtube.com/watch?v=WrDrr23Pj9Y)
+    
   - Formal Verification
     - [https://osec.io/blog/2023-01-26-formally-verifying-solana-programs](https://osec.io/blog/2023-01-26-formally-verifying-solana-programs)
     - [https://medium.com/certora/formal-verification-of-solana-smart-contracts-2e57b960f953](https://medium.com/certora/formal-verification-of-solana-smart-contracts-2e57b960f953)
