@@ -81,7 +81,7 @@ We strongly recommend partnering with us if you're committed to establishing sec
   - Passing an audit contest
   - Web app audit / pentesting:
     - RESOURCES: Awesome Web Security (GitHub List): [https://github.com/qazbnm456/awesome-web-security](https://github.com/qazbnm456/awesome-web-security)
-  - Stress Testing RESOURCES:
+  - Stress Testing
     - [https://github.com/Cetipoo/solana-rpc-benchmark-tool](https://github.com/Cetipoo/solana-rpc-benchmark-tool)
     - [https://github.com/thorlabsDev/thorbench](https://github.com/thorlabsDev/thorbench)
     - [https://github.com/benjiewheeler/memobench](https://github.com/benjiewheeler/memobench)
@@ -103,7 +103,8 @@ We strongly recommend partnering with us if you're committed to establishing sec
     - Hexens
     - Trail of Bits
     - Kudelski Security
-  - TOOLS:
+
+  - Tools:
     - Ackee Trident (Solana fuzzing framework): https://github.com/Ackee-Blockchain/trident
     - Anchor Test UI (Visual Anchor testing framework): https://github.com/pratikbuilds/anchor-UI
     - Blockworks Checked Math (Macro to check math operations): https://github.com/blockworks-foundation/checked-math
@@ -111,6 +112,7 @@ We strongly recommend partnering with us if you're committed to establishing sec
     - cargo-geiger (checks usage of unsafe Rust code): https://crates.io/crates/cargo-geiger
     - Neodyme Solana PoC Framework (penetration testing): https://github.com/neodyme-labs/solana-poc-framework
     - OtterSec Solana CTF Framework: https://github.com/otter-sec/sol-ctf-framework
+
   - AI-Powered Smart Contract Security Tools:
     - X-Ray (Sec3): [https://github.com/sec3-product/x-ray](https://github.com/sec3-product/x-ray)
     - L3X: [https://github.com/VulnPlanet/l3x](https://github.com/VulnPlanet/l3x)
