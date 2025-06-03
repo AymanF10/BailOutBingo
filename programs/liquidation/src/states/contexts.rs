@@ -7,14 +7,14 @@ use crate::states::accounts::*;
 pub struct AdministratorInit<'info> {
     
     //signer
-    #[account(mut)]
+    #[account(mut)] //mut can be modified(change in the lamports amount, as fees is needed to be paid for an account formation)
     pub deployer: Signer<'info>,
 
     //creating the administrator account
     #[account(
         init, // the init constrain creates an account, assignimg space for an account
         payer = deployer,
-        space = 8 + Administrator::INIT_SPACE,
+        space = 8 + Administrator::INIT_SPACE, // 8 is the discriminator size for the account.
         seeds = [b"admin", admin_pubkey.as_ref()],
         bump,
     )]
@@ -29,10 +29,12 @@ pub struct WhitelistedTokenContainerInit<'info>{
     #[account(mut)]
     pub caller: Signer<'info>, //caller is anyone calling the instruction
     
+
+    //bringing the admin account here to reference it.
     #[account(
         mut,
-        seeds = [b"admin", admin_account.admin_pubkey.as_ref()],
-        bump = admin_account.admin_bump
+        seeds = [b"admin", admin_account.admin_pubkey.as_ref()], // already created an admin account which stores the admin pubkey. so here we are retrieving the admin pub key which we already have stored in the the admin account, during initialization.
+        bump = admin_account.admin_bump // bumb is also stored in the admin account.
     )]
     pub admin_account: Account<'info, Administrator>,
 
@@ -41,13 +43,15 @@ pub struct WhitelistedTokenContainerInit<'info>{
         init,
         payer = caller,
         space = 8 + WhitelistedTokenContainer::INIT_SPACE,
-        seeds = [b"whitelisted_token_container"], 
+        seeds = [b"whitelisted_token_container"], //just a container to store the tokens ..dosent need to be unique, so pubkey etc..is not needed, a string is enough.
         bump,
     )]
     pub whitelisted_token_container: Account<'info, WhitelistedTokenContainer>,
     pub system_program: Program<'info, System>,
 }
 
+
+//enables us to define some functions or other structs to be used in a particular struct. 
 impl<'info> WhitelistedTokenContainerInit<'info> {
     pub fn check_caller_is_admin(ctx: &Context<WhitelistedTokenContainerInit>) -> Result<()> {
         require!(
@@ -92,7 +96,7 @@ impl<'info> AddWhitelistedToken<'info> {
 
 // Staking user info
 #[derive(Accounts)]
-#[instruction(token_mint: Pubkey, amount: u64)]
+#[instruction(token_mint: Pubkey)]
 pub struct Staker<'info> {
     //signer
     #[account(mut)]

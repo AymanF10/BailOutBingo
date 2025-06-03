@@ -3,7 +3,7 @@ use crate::states::*;
 
 pub fn staker_initialize(ctx: Context<Staker>, token_mint: Pubkey, amount: u64) -> Result<()> {
     let our_ctx = &mut ctx.accounts.staker_user_info;
-    let whitelist = &ctx.accounts.whitelisted_token_container;
+    let whitelist = &ctx.accounts.whitelisted_token_container; // no add or substraction of the whitelisted token container, hence no need of mut.
     
     // Check if token is whitelisted
     require!(

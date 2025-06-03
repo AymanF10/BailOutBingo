@@ -3,7 +3,7 @@ use crate::states::*;
 
 //Instruction to initialize the admin account
 pub fn admin_initialize(ctx: Context<AdministratorInit>, admin_pubkey: Pubkey) -> Result<()> {
-    let our_ctx = &mut ctx.accounts.admin_account;
+    let our_ctx = &mut ctx.accounts.admin_account; //& is used as referense to the admin acoount.
 
     //store admin details
     our_ctx.admin_pubkey = admin_pubkey;

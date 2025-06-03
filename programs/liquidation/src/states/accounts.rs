@@ -14,7 +14,7 @@ pub struct Administrator {
 #[account]
 #[derive(InitSpace)]
 pub struct WhitelistedTokenContainer {
-    #[max_len(100)]
+    #[max_len(100)] // a vector type and a string needs the max_len contraint.
     pub whitelisted_tokens: Vec<Pubkey>,
     pub whitelisted_tokens_bump: u8,
 }
@@ -24,7 +24,7 @@ pub struct WhitelistedTokenContainer {
 #[derive(InitSpace)]
 pub struct StakerUserInfo {
     pub user_pubkey: Pubkey,
-    pub token_mint: Pubkey,
+    pub token_mint: Pubkey, // the token that the user is staking.
     pub staker_amount: u64,
     pub staker_timestamp: i64,
 }
