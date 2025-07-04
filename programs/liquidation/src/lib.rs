@@ -28,7 +28,7 @@ pub mod liquidation {
     }
     
     pub fn initialize_staker(ctx: Context<Staker>, token_mint: Pubkey, amount: u64) -> Result<()> {
-        staker_initialize(ctx, token_mint, amount)?;
+        stake(ctx, token_mint, amount)?;
         Ok(())
     }
 }
