@@ -2,13 +2,7 @@ use anchor_lang::prelude::*;
 use crate::states::*;
 use crate::states::errors::ErrorCode;
 
-pub fn request_loan(
-    ctx: Context<LoanRequests>, 
-    token_mint: Pubkey, 
-    loan_amount: u64, 
-    interest_rate: u64, 
-    loan_duration: i64
-) -> Result<()> {
+pub fn request_loan(ctx: Context<LoanRequests>, token_mint: Pubkey, loan_amount: u64, interest_rate: u64, loan_duration: i64) -> Result<()> {
     let loan_info = &mut ctx.accounts.loan_account;
     let whitelisted_tokens = &ctx.accounts.whitelisted_token_container;
     
