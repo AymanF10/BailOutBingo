@@ -1,7 +1,6 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{TokenAccount, Mint};
+use anchor_spl::token_interface::{TokenAccount, Mint, TokenInterface};
 use anchor_spl::associated_token::AssociatedToken;
-use anchor_spl::token::Token;
 use crate::states::accounts::*;
 
 #[derive(Accounts)]
@@ -102,13 +101,13 @@ pub struct Staker<'info> {
     #[account(
         constraint = staking_token.key() == token_mint
     )]
-    pub staking_token: Account<'info, Mint>,
+    pub staking_token: InterfaceAccount<'info, Mint>,
     
     #[account(
         associated_token::mint = staking_token,
         associated_token::authority = staker,
     )]
-    pub stakers_ata: Account<'info, TokenAccount>,
+    pub stakers_ata: InterfaceAccount<'info, TokenAccount>,
 
     #[account(
         mut,
@@ -123,8 +122,8 @@ pub struct Staker<'info> {
         associated_token::mint = staking_token,
         associated_token::authority = admin_account,
     )] 
-    pub pool_ata: Account<'info, TokenAccount>,
-    pub token_program: Program<'info, Token>,
+    pub pool_ata: InterfaceAccount<'info, TokenAccount>,
+    pub token_program: Interface<'info, TokenInterface>,
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub system_program: Program<'info, System>,       
 }
