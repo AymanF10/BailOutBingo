@@ -23,3 +23,16 @@ pub struct StakerUserInfo {
     pub staker_amount: u64,
     pub staker_timestamp: i64,
 }
+
+#[account]
+#[derive(InitSpace)]
+pub struct loanInfo {
+    pub loan_id: u64,
+    pub borrower_pubkey: Pubkey,
+    pub token_mint: Pubkey,
+    pub loan_amount: u64,
+    pub interest_rate: u64, 
+    pub loan_start_timestamp: i64,
+    pub loan_end_timestamp: i64,
+    pub is_repaid: bool,
+}

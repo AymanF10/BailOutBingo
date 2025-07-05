@@ -127,3 +127,27 @@ pub struct Staker<'info> {
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub system_program: Program<'info, System>,       
 }
+
+#[derive(Accounts)]
+#[instruction(token_mint: Pubkey)]
+pub struct LoanRequests <'info> {
+    #[account(mut)]
+    pub caller: Signer <'info>,
+
+    #[account(
+        init,
+        payer = caller,
+        space = 8 + loanInfo::INIT_SPACE,
+        seeds = [b"LoanInfo", caller.key().as_ref()],
+        bump,
+    )]
+    pub loan_account: Account<'info, loanInfo>,
+    
+    #[account(
+        seeds = [b"whitelisted_token_container"],
+        bump = whitelisted_token_container.whitelisted_tokens_bump
+    )]
+    pub whitelisted_token_container: Account<'info, WhitelistedTokenContainer>,
+    
+    pub system_program: Program<'info, System>,
+}

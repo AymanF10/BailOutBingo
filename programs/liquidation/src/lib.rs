@@ -31,6 +31,11 @@ pub mod liquidation {
         stake(ctx, token_mint, amount)?;
         Ok(())
     }
+    
+    pub fn request_loan(ctx: Context<LoanRequests>, token_mint: Pubkey, loan_amount: u64, interest_rate: u64, loan_duration: i64) -> Result<()> {
+        request_loan(ctx, token_mint, loan_amount, interest_rate, loan_duration)?;
+        Ok(())
+    }
 }
 
 
